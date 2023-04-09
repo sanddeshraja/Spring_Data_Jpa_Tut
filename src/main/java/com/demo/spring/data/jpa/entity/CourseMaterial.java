@@ -1,16 +1,14 @@
 package com.demo.spring.data.jpa.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = "course")
 public class CourseMaterial {
     @Id
     @SequenceGenerator(name = "course_material_sequence"
@@ -20,7 +18,7 @@ public class CourseMaterial {
             ,generator = "course_material_sequence")
     private Long courseMaterialId;
     private String url;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     @JoinColumn(name = "course_id",referencedColumnName = "courseId")
     private Course course;
 

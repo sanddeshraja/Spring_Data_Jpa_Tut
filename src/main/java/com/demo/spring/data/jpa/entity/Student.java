@@ -27,5 +27,5 @@ public class Student {
            ,nullable = false) //Column Name to be displayed irrespective of the var name
     private String  emailId;
    @Embedded
- private Guardian guardian;
+  private Guardian guardian;
 }

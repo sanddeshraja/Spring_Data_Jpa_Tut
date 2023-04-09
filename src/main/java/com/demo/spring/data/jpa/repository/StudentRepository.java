@@ -18,7 +18,7 @@ public interface StudentRepository extends JpaRepository<Student,Long > {
    public List<Student> findByGuardianName(String guardianName);
 
    //JPQL
-   @Query("select s from student where s.emailId = ?1")
+   @Query("select s from Student s where s.emailId = ?1")
    public List<Student> getStudentByEmailAddress(String emailAddress);
 //   or
 //@Query(value ="select s from student where s.emailId = :emailAddress", nativeQuery = true)
@@ -28,4 +28,6 @@ public interface StudentRepository extends JpaRepository<Student,Long > {
    @Query( value = "update student set first_name = ?1 where email_address = ?2 "
          ,nativeQuery = true)
    int updateStudentNameByEmailId(String firstName, String emailId);
+
+
 }
